@@ -10,4 +10,6 @@ int main()
 		a[i] = i + 1;
 
 	cout << RecursiveBinarySearch(a, 0, 10, 4);
+
+	delete[] a;
 }
