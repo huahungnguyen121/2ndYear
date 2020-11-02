@@ -17,6 +17,8 @@ List* createList(NODE* p_node)
         if (!p->p_next)
             temp->p_tail = p;
     }
+
+    return temp;
 }
 
 bool addHead(List*& L, int data)
@@ -29,7 +31,15 @@ bool addHead(List*& L, int data)
 
 bool addTail(List*& L, int data)
 {
+    if (L->p_head == NULL && L->p_tail == NULL)
+    {
+        addHead(L, data);
+        return true;
+    }
+    
+  
     NODE* temp = createNode(data);
+    L->p_tail->p_next = temp;
     L->p_tail = temp;
     return true;
 }
@@ -67,7 +77,7 @@ void removeTail(List*& L)
         return;
     }
     
-    NODE* followNode;
+    NODE* followNode = NULL;
     for (NODE* p = L->p_head; p; p = p->p_next)
     {
         if (!p->p_next)
@@ -107,7 +117,34 @@ int countElements(List* L)
 
 List* reverseList(List* L)
 {
-    return nullptr;
+    List* temp = new List;
+
+    NODE* cur = L->p_tail;
+    bool flag = false;
+    while (cur)
+    {
+        NODE* buffer = createNode(cur->key);
+        if (!flag)
+        {
+            temp->p_head = buffer;
+            temp->p_tail = buffer;
+            flag = true;
+        }
+        else
+            addTail(temp, cur->key);
+        for (NODE* p = L->p_head; p; p = p->p_next)
+        {
+            if (p->p_next == cur)
+            {
+                cur = p;
+                break;
+            }
+            if (!p->p_next)
+                cur = NULL;
+        }
+    }
+
+    return temp;
 }
 
 void removeDuplicate(List*& L)
