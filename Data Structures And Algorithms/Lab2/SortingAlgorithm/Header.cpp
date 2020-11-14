@@ -43,17 +43,14 @@ float insertionSort(int a[], int n)
 	clock_t start = clock();
 	int k = 1;
 	while (k < n) {
-		int i = k;
+		int i = k - 1;
 		int p = a[k];
-		while (i > -1)
+		while (i > -1 && a[i] > p)
 		{
-			if (a[i] < p)
-				break;
+			a[i + 1] = a[i];
 			i--;
 		}
 		i++;
-		for (int j = k; j > i; j--)
-			a[j] = a[j - 1];
 		a[i] = p;
 		k++;
 	}

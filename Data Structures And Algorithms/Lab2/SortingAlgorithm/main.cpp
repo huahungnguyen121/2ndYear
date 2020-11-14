@@ -101,7 +101,7 @@ long main() {
 	cout << "NearlySorted " << n << " element are sorted in " << nearlySortedTime << " second(s)\n";
 
 	//for (int i = 0; i < n; i++)
-	//	cout << c[i] << endl;
+	//	cout << a[i] << endl;
 
 	return 0;
 }
