@@ -65,9 +65,9 @@ void sift(int a[], int left, int right)
 	int j = 2 * i + 1;
 	int x = a[i];
 	while (j <= right) {
-		if ((a[j] > a[j + 1]) && j < right)
+		if ((a[j] < a[j + 1]) && j < right)
 			j++;
-		if (x <= a[j])
+		if (x >= a[j])
 			break;
 		a[i] = a[j];
 		i = j;
@@ -78,9 +78,10 @@ void sift(int a[], int left, int right)
 
 float heapSort(int a[], int n)
 {
+	clock_t start = clock();
 	int left = n / 2 - 1;
 	while (left > -1) {
-		sift(a, left, n);
+		sift(a, left, n - 1);
 		left--;
 	}
 
@@ -90,4 +91,38 @@ float heapSort(int a[], int n)
 		right--;
 		sift(a, 0, right);
 	}
+
+	clock_t end = clock();
+
+	return (float)(end - start) / CLOCKS_PER_SEC;
+}
+
+int partition(int a[], int left, int right)
+{
+	int mid = left + (right - left) / 2;
+	int p = a[mid];
+	//swap(a[0], a[mid]);
+	int i = left - 1;
+	int j = right + 1;
+	do {
+		do
+			i++;
+		while (a[i] < p);
+		do
+			j--;
+		while (a[j] > p);
+		swap(a[i], a[j]);
+	} while (i < j);
+	swap(a[i], a[j]);
+	return j;
+}
+
+float quickSort(int a[], int left, int right)
+{
+	if (left < right) {
+		int s = partition(a, left, right);
+		quickSort(a, left, s);
+		quickSort(a, s + 1, right);
+	}
+	return 0.0;
 }

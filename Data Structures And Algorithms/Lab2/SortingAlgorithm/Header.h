@@ -13,5 +13,7 @@ float selectionSort(int a[], int n);
 float insertionSort(int a[], int n);
 void sift(int a[], int left, int right);
 float heapSort(int a[], int n);
+int partition(int a[], int left, int right);
+float quickSort(int a[], int left, int right);
 
 #endif

@@ -77,31 +77,40 @@ void GenerateData(int a[], int n, int dataType)
 }
 
 int main() {
-	int a[30000];
-	int b[30000];
-	int c[30000];
-	int d[30000];
+	//int n = 300000;
 
-	int n = 30000;
+	//int *a = new int[n];
+	//int *b = new int[n];
+	//int *c = new int[n];
+	//int *d = new int[n];
+	int e[10];
 
-	GenerateData(a, n, 0);
-	GenerateData(b, n, 1);
-	GenerateData(c, n, 2);
-	GenerateData(d, n, 3);
+	//GenerateData(a, n, 0);
+	//GenerateData(b, n, 1);
+	//GenerateData(c, n, 2);
+	//GenerateData(d, n, 3);
+	GenerateData(e, 10, 0);
 
-	float ranTime = insertionSort(a, n);
-	float sortedTime = insertionSort(b, n);
-	float reverseTime = insertionSort(c, n);
-	float nearlySortedTime = insertionSort(d, n);
+	//float ranTime = heapSort(a, n);
+	//float sortedTime = heapSort(b, n);
+	//float reverseTime = heapSort(c, n);
+	//float nearlySortedTime = heapSort(d, n);
+
+	quickSort(e, 0, 9);
 
 
-	cout << "Random " << n << " element are sorted in " << ranTime << " second(s)\n";
-	cout << "Sorted " << n << " element are sorted in " << sortedTime << " second(s)\n";
-	cout << "Reverse " << n << " element are sorted in " << reverseTime << " second(s)\n";
-	cout << "NearlySorted " << n << " element are sorted in " << nearlySortedTime << " second(s)\n";
+	//cout << "Random " << n << " element are sorted in " << ranTime << " second(s)\n";
+	//cout << "Sorted " << n << " element are sorted in " << sortedTime << " second(s)\n";
+	//cout << "Reverse " << n << " element are sorted in " << reverseTime << " second(s)\n";
+	//cout << "NearlySorted " << n << " element are sorted in " << nearlySortedTime << " second(s)\n";
 
-	//for (int i = 0; i < n; i++)
-	//	cout << a[i] << endl;
+	for (int i = 0; i < 10; i++)
+		cout << e[i] << endl;
+
+	//delete[] a;
+	//delete[] b;
+	//delete[] c;
+	//delete[] d;
 
 	return 0;
 }
