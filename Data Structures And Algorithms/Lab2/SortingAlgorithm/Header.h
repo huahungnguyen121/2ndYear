@@ -11,5 +11,7 @@ float bubbleSort(int a[], int n);
 int findMin(int a[], int start, int n);
 float selectionSort(int a[], int n);
 float insertionSort(int a[], int n);
+void sift(int a[], int left, int right);
+float heapSort(int a[], int n);
 
 #endif

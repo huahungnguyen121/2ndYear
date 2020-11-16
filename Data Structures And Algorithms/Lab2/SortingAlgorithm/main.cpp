@@ -76,7 +76,7 @@ void GenerateData(int a[], int n, int dataType)
 	}
 }
 
-long main() {
+int main() {
 	int a[30000];
 	int b[30000];
 	int c[30000];

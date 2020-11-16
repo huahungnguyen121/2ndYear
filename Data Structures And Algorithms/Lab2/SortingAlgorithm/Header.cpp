@@ -58,3 +58,36 @@ float insertionSort(int a[], int n)
 
 	return (float)(end - start) / CLOCKS_PER_SEC;
 }
+
+void sift(int a[], int left, int right)
+{
+	int i = left;
+	int j = 2 * i + 1;
+	int x = a[i];
+	while (j <= right) {
+		if ((a[j] > a[j + 1]) && j < right)
+			j++;
+		if (x <= a[j])
+			break;
+		a[i] = a[j];
+		i = j;
+		j = 2 * i + 1;
+	}
+	a[i] = x;
+}
+
+float heapSort(int a[], int n)
+{
+	int left = n / 2 - 1;
+	while (left > -1) {
+		sift(a, left, n);
+		left--;
+	}
+
+	int right = n - 1;
+	while (right > 0) {
+		swap(a[0], a[right]);
+		right--;
+		sift(a, 0, right);
+	}
+}
