@@ -83,20 +83,25 @@ int main() {
 	//int *b = new int[n];
 	//int *c = new int[n];
 	//int *d = new int[n];
-	int e[10];
+	int e[100];
 
 	//GenerateData(a, n, 0);
 	//GenerateData(b, n, 1);
 	//GenerateData(c, n, 2);
 	//GenerateData(d, n, 3);
-	GenerateData(e, 10, 0);
+	GenerateData(e, 100, 0);
 
-	//float ranTime = heapSort(a, n);
-	//float sortedTime = heapSort(b, n);
-	//float reverseTime = heapSort(c, n);
-	//float nearlySortedTime = heapSort(d, n);
+	for (int i = 0; i < 10; i++)
+		cout << e[i] << endl;
 
-	quickSort(e, 0, 9);
+	cout << endl;
+
+	//float ranTime = quickSort(a, 0, n - 1);
+	//float sortedTime = quickSort(b, 0, n - 1);
+	//float reverseTime = quickSort(c, 0, n - 1);
+	//float nearlySortedTime = quickSort(d, 0, n - 1);
+
+	radixSort(e, 100);
 
 
 	//cout << "Random " << n << " element are sorted in " << ranTime << " second(s)\n";
@@ -104,7 +109,7 @@ int main() {
 	//cout << "Reverse " << n << " element are sorted in " << reverseTime << " second(s)\n";
 	//cout << "NearlySorted " << n << " element are sorted in " << nearlySortedTime << " second(s)\n";
 
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 100; i++)
 		cout << e[i] << endl;
 
 	//delete[] a;
