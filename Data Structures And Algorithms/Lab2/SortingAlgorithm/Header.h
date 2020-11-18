@@ -5,6 +5,7 @@
 #include <fstream>
 #include <cmath>
 #include <time.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -35,5 +36,7 @@ int getMaxDigit(int a[], int n);
 void createBins(int a[], int n, int k, Bin*& b);
 void freeBins(Bin*& b);
 float radixSort(int a[], int n);
+void merge(int a[], int left, int mid, int right);
+float mergeSort(int a[], int left, int right);
 
 #endif

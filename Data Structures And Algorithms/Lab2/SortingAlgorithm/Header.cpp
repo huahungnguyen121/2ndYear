@@ -250,3 +250,61 @@ float radixSort(int a[], int n)
 
 	return (float)(end - start) / CLOCKS_PER_SEC;
 }
+
+void merge(int a[], int left, int mid, int right) {
+	int n1 = mid - left + 1;
+	int n2 = right - mid;
+
+	int* tempArray1 = new int[n1];
+	int* tempArray2 = new int[n2];
+
+	for (int i = 0; i < n1; i++)
+		tempArray1[i] = a[left + i];
+
+	for (int i = 0; i < n2; i++)
+		tempArray2[i] = a[left + n1 + i];
+
+	int i = 0;
+	int j = 0;
+	int k = left;
+
+	while (i < n1 && j < n2) {
+		if (tempArray1[i] < tempArray2[j]) {
+			a[k++] = tempArray1[i++];
+		}
+		else
+			a[k++] = tempArray2[j++];
+	}
+
+	if (i == n1) {
+		while (j < n2) {
+			a[k++] = tempArray2[j++];
+		}
+		delete[] tempArray1;
+		delete[] tempArray2;
+		return;
+	}
+	if (j == n2) {
+		while (i < n1) {
+			a[k++] = tempArray1[i++];
+		}
+		delete[] tempArray1;
+		delete[] tempArray2;
+		return;
+	}
+}
+
+float mergeSort(int a[], int left, int right) {
+	clock_t start = clock();
+	if (left < right) {
+		int mid = (right + left) / 2;
+
+		mergeSort(a, left, mid);
+		mergeSort(a, mid + 1, right);
+
+		merge(a, left, mid, right);
+	}
+	clock_t end = clock();
+
+	return (float)(end - start) / CLOCKS_PER_SEC;
+}

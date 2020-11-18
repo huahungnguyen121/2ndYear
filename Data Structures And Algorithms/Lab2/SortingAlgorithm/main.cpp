@@ -77,7 +77,7 @@ void GenerateData(int a[], int n, int dataType)
 }
 
 int main() {
-	int n = 100000;
+	int n = 300000;
 
 	int *a = new int[n];
 	int *b = new int[n];
@@ -103,16 +103,21 @@ int main() {
 
 	//radixSort(e, 100);
 
-	float ranTime = radixSort(a, n);
+	/*float ranTime = radixSort(a, n);
 	float sortedTime = radixSort(b, n);
 	float reverseTime = radixSort(c, n);
-	float nearlySortedTime = radixSort(d, n);
+	float nearlySortedTime = radixSort(d, n);*/
+
+	float ranTime = mergeSort(a, 0, n - 1);
+	float sortedTime = mergeSort(b, 0, n - 1);
+	float reverseTime = mergeSort(c, 0, n - 1);
+	float nearlySortedTime = mergeSort(d, 0, n - 1);
 
 
-	cout << "Random " << n << " element are sorted in " << ranTime << " second(s)\n";
-	cout << "Sorted " << n << " element are sorted in " << sortedTime << " second(s)\n";
-	cout << "Reverse " << n << " element are sorted in " << reverseTime << " second(s)\n";
-	cout << "NearlySorted " << n << " element are sorted in " << nearlySortedTime << " second(s)\n";
+	cout << "Random " << n << " elements are sorted in " << setprecision(6) << fixed << ranTime << " second(s)\n";
+	cout << "Sorted " << n << " elements are sorted in " << setprecision(6) << fixed << sortedTime << " second(s)\n";
+	cout << "Reverse " << n << " elements are sorted in " << setprecision(6) << fixed << reverseTime << " second(s)\n";
+	cout << "NearlySorted " << n << " elements are sorted in " << setprecision(6) << fixed << nearlySortedTime << " second(s)\n";
 
 	//for (int i = 0; i < n; i++)
 	//	cout << a[i] << endl;
