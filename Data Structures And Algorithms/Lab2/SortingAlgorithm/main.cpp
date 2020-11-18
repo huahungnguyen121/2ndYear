@@ -77,45 +77,50 @@ void GenerateData(int a[], int n, int dataType)
 }
 
 int main() {
-	//int n = 300000;
+	int n = 100000;
 
-	//int *a = new int[n];
-	//int *b = new int[n];
-	//int *c = new int[n];
-	//int *d = new int[n];
-	int e[100];
+	int *a = new int[n];
+	int *b = new int[n];
+	int *c = new int[n];
+	int *d = new int[n];
+	//int e[100];
 
-	//GenerateData(a, n, 0);
-	//GenerateData(b, n, 1);
-	//GenerateData(c, n, 2);
-	//GenerateData(d, n, 3);
-	GenerateData(e, 100, 0);
+	GenerateData(a, n, 0);
+	GenerateData(b, n, 1);
+	GenerateData(c, n, 2);
+	GenerateData(d, n, 3);
+	//GenerateData(e, 100, 0);
 
-	for (int i = 0; i < 10; i++)
-		cout << e[i] << endl;
+	//for (int i = 0; i < 10; i++)
+	//	cout << e[i] << endl;
 
-	cout << endl;
+	//cout << endl;
 
 	//float ranTime = quickSort(a, 0, n - 1);
 	//float sortedTime = quickSort(b, 0, n - 1);
 	//float reverseTime = quickSort(c, 0, n - 1);
 	//float nearlySortedTime = quickSort(d, 0, n - 1);
 
-	radixSort(e, 100);
+	//radixSort(e, 100);
+
+	float ranTime = radixSort(a, n);
+	float sortedTime = radixSort(b, n);
+	float reverseTime = radixSort(c, n);
+	float nearlySortedTime = radixSort(d, n);
 
 
-	//cout << "Random " << n << " element are sorted in " << ranTime << " second(s)\n";
-	//cout << "Sorted " << n << " element are sorted in " << sortedTime << " second(s)\n";
-	//cout << "Reverse " << n << " element are sorted in " << reverseTime << " second(s)\n";
-	//cout << "NearlySorted " << n << " element are sorted in " << nearlySortedTime << " second(s)\n";
+	cout << "Random " << n << " element are sorted in " << ranTime << " second(s)\n";
+	cout << "Sorted " << n << " element are sorted in " << sortedTime << " second(s)\n";
+	cout << "Reverse " << n << " element are sorted in " << reverseTime << " second(s)\n";
+	cout << "NearlySorted " << n << " element are sorted in " << nearlySortedTime << " second(s)\n";
 
-	for (int i = 0; i < 100; i++)
-		cout << e[i] << endl;
+	//for (int i = 0; i < n; i++)
+	//	cout << a[i] << endl;
 
-	//delete[] a;
-	//delete[] b;
-	//delete[] c;
-	//delete[] d;
+	delete[] a;
+	delete[] b;
+	delete[] c;
+	delete[] d;
 
 	return 0;
 }
