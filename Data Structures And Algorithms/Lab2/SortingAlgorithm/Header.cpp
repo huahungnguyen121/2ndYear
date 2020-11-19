@@ -5,7 +5,7 @@ float bubbleSort(int a[], int n)
 	clock_t start = clock();
 	for (int i = 1; i < n; i++)
 	{
-		for (int j = n - 1; j > i; j--)
+		for (int j = n - 1; j >= i; j--)
 		{
 			if (a[j] < a[j - 1])
 				swap(a[j], a[j - 1]);

@@ -108,10 +108,15 @@ int main() {
 	float reverseTime = radixSort(c, n);
 	float nearlySortedTime = radixSort(d, n);*/
 
-	float ranTime = mergeSort(a, 0, n - 1);
+	/*float ranTime = mergeSort(a, 0, n - 1);
 	float sortedTime = mergeSort(b, 0, n - 1);
 	float reverseTime = mergeSort(c, 0, n - 1);
-	float nearlySortedTime = mergeSort(d, 0, n - 1);
+	float nearlySortedTime = mergeSort(d, 0, n - 1);*/
+
+	float ranTime = bubbleSort(a, n);
+	float sortedTime = bubbleSort(b, n);
+	float reverseTime = bubbleSort(c, n);
+	float nearlySortedTime = bubbleSort(d, n);
 
 
 	cout << "Random " << n << " elements are sorted in " << setprecision(6) << fixed << ranTime << " second(s)\n";
