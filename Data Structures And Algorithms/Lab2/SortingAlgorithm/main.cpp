@@ -77,7 +77,7 @@ void GenerateData(int a[], int n, int dataType)
 }
 
 int main() {
-	int n = 300000;
+	int n = 3000;
 
 	int *a = new int[n];
 	int *b = new int[n];
@@ -96,10 +96,10 @@ int main() {
 
 	//cout << endl;
 
-	//float ranTime = quickSort(a, 0, n - 1);
-	//float sortedTime = quickSort(b, 0, n - 1);
-	//float reverseTime = quickSort(c, 0, n - 1);
-	//float nearlySortedTime = quickSort(d, 0, n - 1);
+	/*float ranTime = quickSort(a, 0, n - 1);
+	float sortedTime = quickSort(b, 0, n - 1);
+	float reverseTime = quickSort(c, 0, n - 1);
+	float nearlySortedTime = quickSort(d, 0, n - 1);*/
 
 	//radixSort(e, 100);
 
@@ -107,6 +107,11 @@ int main() {
 	float sortedTime = radixSort(b, n);
 	float reverseTime = radixSort(c, n);
 	float nearlySortedTime = radixSort(d, n);*/
+
+	/*float ranTime = heapSort(a, n);
+	float sortedTime = heapSort(b, n);
+	float reverseTime = heapSort(c, n);
+	float nearlySortedTime = heapSort(d, n);*/
 
 	/*float ranTime = mergeSort(a, 0, n - 1);
 	float sortedTime = mergeSort(b, 0, n - 1);
@@ -118,10 +123,15 @@ int main() {
 	float reverseTime = bubbleSort(c, n);
 	float nearlySortedTime = bubbleSort(d, n);*/
 
-	float ranTime = selectionSort(a, n);
+	/*float ranTime = selectionSort(a, n);
 	float sortedTime = selectionSort(b, n);
 	float reverseTime = selectionSort(c, n);
-	float nearlySortedTime = selectionSort(d, n);
+	float nearlySortedTime = selectionSort(d, n);*/
+
+	float ranTime = insertionSort(a, n);
+	float sortedTime = insertionSort(b, n);
+	float reverseTime = insertionSort(c, n);
+	float nearlySortedTime = insertionSort(d, n);
 
 
 	cout << "Random " << n << " elements are sorted in " << setprecision(6) << fixed << ranTime << " second(s)\n";
