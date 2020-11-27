@@ -16,22 +16,63 @@ dList* createList(int x)
     result->head = NULL;
     result->tail = NULL;
 
-    addHead(result, x);
+    dNode* temp = createNode(x);
+
+    addHead(result, temp);
 
     return result;
 }
 
-void addHead(dList*& list, int x)
+void addHead(dList*& list, dNode*& pNode)
 {
     if (!list->head) {
-        dNode* temp = createNode(x);
-        list->head = temp;
-        list->tail = temp;
+        list->head = pNode;
+        list->tail = pNode;
     }
     else {
-        dNode* temp = createNode(x);
-        temp->next = list->head;
-        list->head->prev = temp;
-        list->head = temp;
+        pNode->next = list->head;
+        list->head->prev = pNode;
+        list->head = pNode;
+    }
+}
+
+void addTail(dList*& list, dNode*& pNode)
+{
+    if (!list->head) {
+        list->head = pNode;
+        list->tail = pNode;
+    }
+    else {
+        pNode->prev = list->tail;
+        list->tail->next = pNode;
+        list->tail = pNode;
+    }
+}
+
+void addBefore(dNode*& pos, dNode*& pAdd)
+{
+    if (!pos->prev) {
+        pos->prev = pAdd;
+        pAdd->next = pos;
+    }
+    else {
+        pAdd->prev = pos->prev;
+        pAdd->next = pos;
+        pos->prev->next = pAdd;
+        pos->prev = pAdd;
+    }
+}
+
+void addAfter(dNode*& pos, dNode*& pAdd)
+{
+    if (!pos->next) {
+        pos->next = pAdd;
+        pAdd->prev = pos;
+    }
+    else {
+        pAdd->prev = pos;
+        pAdd->next = pos->next;
+        pos->next->prev = pAdd;
+        pos->next = pAdd;
     }
 }

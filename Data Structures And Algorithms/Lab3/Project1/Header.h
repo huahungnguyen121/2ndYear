@@ -16,6 +16,9 @@ struct dList {
 
 dNode* createNode(int x);
 dList* createList(int x);
-void addHead(dList*& list, int x);
+void addHead(dList*& list, dNode*& pNode);
+void addTail(dList*& list, dNode*& pNode);
+void addBefore(dNode*& pos, dNode*& pAdd);
+void addAfter(dNode*& pos, dNode*& pAdd);
 
 #endif
