@@ -108,10 +108,10 @@ int main() {
 	float reverseTime = radixSort(c, n);
 	float nearlySortedTime = radixSort(d, n);*/
 
-	/*float ranTime = heapSort(a, n);
+	float ranTime = heapSort(a, n);
 	float sortedTime = heapSort(b, n);
 	float reverseTime = heapSort(c, n);
-	float nearlySortedTime = heapSort(d, n);*/
+	float nearlySortedTime = heapSort(d, n);
 
 	/*float ranTime = mergeSort(a, 0, n - 1);
 	float sortedTime = mergeSort(b, 0, n - 1);
@@ -128,16 +128,16 @@ int main() {
 	float reverseTime = selectionSort(c, n);
 	float nearlySortedTime = selectionSort(d, n);*/
 
-	float ranTime = insertionSort(a, n);
+	/*float ranTime = insertionSort(a, n);
 	float sortedTime = insertionSort(b, n);
 	float reverseTime = insertionSort(c, n);
-	float nearlySortedTime = insertionSort(d, n);
+	float nearlySortedTime = insertionSort(d, n);*/
 
 
-	cout << "Random " << n << " elements are sorted in " << setprecision(6) << fixed << ranTime << " second(s)\n";
-	cout << "Sorted " << n << " elements are sorted in " << setprecision(6) << fixed << sortedTime << " second(s)\n";
-	cout << "Reverse " << n << " elements are sorted in " << setprecision(6) << fixed << reverseTime << " second(s)\n";
-	cout << "NearlySorted " << n << " elements are sorted in " << setprecision(6) << fixed << nearlySortedTime << " second(s)\n";
+	cout << "Random " << n << " elements are sorted in " << setprecision(15) << fixed << ranTime << " second(s)\n";
+	cout << "Sorted " << n << " elements are sorted in " << setprecision(15) << fixed << sortedTime << " second(s)\n";
+	cout << "Reverse " << n << " elements are sorted in " << setprecision(15) << fixed << reverseTime << " second(s)\n";
+	cout << "NearlySorted " << n << " elements are sorted in " << setprecision(15) << fixed << nearlySortedTime << " second(s)\n";
 
 	//for (int i = 0; i < n; i++)
 	//	cout << a[i] << endl;
