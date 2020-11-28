@@ -9,16 +9,12 @@ dNode* createNode(int x)
     return temp;
 }
 
-dList* createList(int x)
+dList* createList()
 {
     dList* result = new dList;
 
     result->head = NULL;
     result->tail = NULL;
-
-    dNode* temp = createNode(x);
-
-    addHead(result, temp);
 
     return result;
 }
@@ -75,4 +71,84 @@ void addAfter(dNode*& pos, dNode*& pAdd)
         pos->next->prev = pAdd;
         pos->next = pAdd;
     }
+}
+
+void removeHead(dList*& list)
+{
+	if (!list->head)
+		return;
+	else {
+		if (list->head == list->tail) {
+			dNode* temp = list->head;
+			list->head = NULL;
+			list->tail = NULL;
+			delete temp;
+		}
+		else {
+			dNode* temp = list->head;
+			list->head = list->head->next;
+			list->head->prev = NULL;
+			delete temp;
+		}
+	}
+}
+
+void removeTail(dList*& list)
+{
+	if (!list->head)
+		return;
+	else {
+		if (list->head == list->tail) {
+			dNode* temp = list->head;
+			list->head = NULL;
+			list->tail = NULL;
+			delete temp;
+		}
+		else {
+			dNode* temp = list->tail;
+			list->tail = list->tail->prev;
+			list->tail->next = NULL;
+			delete temp;
+		}
+	}
+}
+
+bool removeWithValue(dList*& list, int key)
+{
+	dNode* p = list->head;
+	
+	while (p) {
+		if (p->k == key) {
+			dNode* temp = p;
+			p->prev->next = p->next;
+			p->next->prev = p->prev;
+			delete temp;
+			return true;
+		}
+		p = p->next;
+	}
+
+	return false;
+}
+
+void freeList(dList*& list)
+{
+	dNode* p = list->head;
+
+	while (p) {
+		removeHead(list);
+		p = list->head;
+	}
+}
+
+void printList(dList*& list, bool order)
+{
+	if (order) {
+		for (dNode* p = list->head; p; p = p->next)
+			cout << p->k << " ";
+	}
+	else {
+		for (dNode* p = list->tail; p; p = p->prev)
+			cout << p->k << " ";
+	}
 }
