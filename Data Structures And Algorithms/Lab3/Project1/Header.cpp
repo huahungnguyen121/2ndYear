@@ -119,6 +119,14 @@ bool removeWithValue(dList*& list, int key)
 	
 	while (p) {
 		if (p->k == key) {
+			if (p == list->head) {
+				removeHead(list);
+				return true;
+			}
+			if (p == list->tail) {
+				removeTail(list);
+				return true;
+			}
 			dNode* temp = p;
 			p->prev->next = p->next;
 			p->next->prev = p->prev;

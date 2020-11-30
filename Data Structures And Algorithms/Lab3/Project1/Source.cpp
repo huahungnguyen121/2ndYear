@@ -51,6 +51,24 @@ int main() {
 
 	cout << endl;
 
+	//remove node with key 18 (TAIL)
+	removeWithValue(list, 18);
+
+	//remove node with key 1 (HEAD)
+	removeWithValue(list, 1);
+
+	//remove node with key 5
+	removeWithValue(list, 5);
+
+	//print in 2 orders to test
+	printList(list, true);
+
+	cout << endl;
+
+	printList(list, false);
+
+	cout << endl;
+
 	//free memory
 	freeList(list);
 
