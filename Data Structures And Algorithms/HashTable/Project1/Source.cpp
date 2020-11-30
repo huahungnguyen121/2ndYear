@@ -58,3 +58,8 @@ void Tokenizer::printTokens()
 vector<Company> ReadCompanyList(string file_name) {
 
 }
+
+long long HashString(string company_name)
+{
+	return 0;
+}

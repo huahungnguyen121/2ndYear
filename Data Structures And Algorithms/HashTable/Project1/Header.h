@@ -21,5 +21,6 @@ struct Company {
 };
 
 vector<Company> ReadCompanyList(string file_name);
+long long HashString(string company_name);
 
 #endif
