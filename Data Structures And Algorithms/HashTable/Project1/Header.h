@@ -14,6 +14,12 @@ public:
 	void printTokens();
 };
 
+struct Company {
+	string name;
+	string profit_tax;
+	string address;
+};
 
+vector<Company> ReadCompanyList(string file_name);
 
 #endif

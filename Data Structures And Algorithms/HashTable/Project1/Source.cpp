@@ -54,3 +54,7 @@ void Tokenizer::printTokens()
 	for (int i = 0; i < size; i++)
 		cout << tokens[i] << " ";
 }
+
+vector<Company> ReadCompanyList(string file_name) {
+
+}
