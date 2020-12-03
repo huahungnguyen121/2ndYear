@@ -2,17 +2,17 @@
 
 int main() {
 
-	Node* p = createNode(0);
+	Node* p = createNode(4);
 
 	Node** pointer = new Node * [6];
 
-	p->pLeft = createNode(1);
+	p->pLeft = createNode(2);
 
-	p->pRight = createNode(2);
+	p->pRight = createNode(7);
 
-	p->pLeft->pLeft = createNode(3);
+	p->pLeft->pLeft = createNode(1);
 
-	p->pLeft->pRight = createNode(4);
+	p->pLeft->pRight = createNode(3);
 
 	p->pRight->pLeft = createNode(5);
 
@@ -23,18 +23,23 @@ int main() {
 	pointer[4] = p->pLeft->pRight;
 	pointer[5] = p->pRight->pLeft;
 
+	//pre-order traversal
 	NLR(p);
-	
 	cout << endl;
 
+	//in-order traversal
 	LNR(p);
-
 	cout << endl;
 
+	//post-order traversal
 	LRN(p);
 	cout << endl;
 
-	cout << getHeight(p);
+	//level-order traversal
+	LevelOrder(p);
+	cout << endl;
+
+	cout << Search(p, 5);
 
 	for (size_t i = 0; i < 5; i++)
 		delete pointer[i];

@@ -54,11 +54,34 @@ void printLevel(Node* pRoot, int level) {
 		cout << pRoot->key << " ";
 	else if (pRoot && level > 0) {
 		printLevel(pRoot->pLeft, level - 1);
-		printLevel(pRoot->pLeft, level - 1);
+		printLevel(pRoot->pRight, level - 1);
 	}
 }
 
 void LevelOrder(Node* pRoot)
 {
-	
+	int height = getHeight(pRoot);
+
+	for (size_t i = 0; i < height; i++)
+		printLevel(pRoot, i);
+}
+
+Node* Search(Node* pRoot, int x)
+{
+	if (pRoot) {
+		if (pRoot->key == x)
+			return pRoot;
+
+		if (pRoot->key > x) {
+			Node* left = Search(pRoot->pLeft, x);
+			if (left)
+				return left;
+		}
+		else {
+			Node* right = Search(pRoot->pRight, x);
+			if (right)
+				return right;
+		}
+	}
+	else return NULL;
 }
