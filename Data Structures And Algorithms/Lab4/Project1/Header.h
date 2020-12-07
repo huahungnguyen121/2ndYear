@@ -19,5 +19,6 @@ void LRN(Node* pRoot);
 void printLevel(Node* pRoot, int level);
 void LevelOrder(Node* pRoot);
 Node* Search(Node* pRoot, int x);
+int countLeaf(Node* pRoot);
 
 #endif

@@ -85,3 +85,14 @@ Node* Search(Node* pRoot, int x)
 	}
 	else return NULL;
 }
+
+int countLeaf(Node* pRoot)
+{
+	if (!pRoot)
+		return 0;
+	else {
+		if (!pRoot->pLeft && !pRoot->pRight)
+			return 1;
+		return countLeaf(pRoot->pLeft) + countLeaf(pRoot->pRight);
+	}
+}

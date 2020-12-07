@@ -39,7 +39,11 @@ int main() {
 	LevelOrder(p);
 	cout << endl;
 
-	cout << Search(p, 5);
+	cout << Search(p, 5) << endl;
+
+	//count leaf
+
+	cout << countLeaf(p) << endl;
 
 	for (size_t i = 0; i < 5; i++)
 		delete pointer[i];
