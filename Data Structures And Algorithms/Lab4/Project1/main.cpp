@@ -42,7 +42,6 @@ int main() {
 	cout << Search(p, 5) << endl;
 
 	//count leaf
-
 	cout << countLeaf(p) << endl;
 
 	for (size_t i = 0; i < 5; i++)
