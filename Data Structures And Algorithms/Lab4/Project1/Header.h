@@ -11,6 +11,14 @@ struct Node {
 	Node* pRight;
 };
 
+struct AVLNode {
+	int key;
+	AVLNode* pLeft;
+	AVLNode* pRight;
+	int height;
+};
+
+//BST
 Node* createNode(int data);
 int getHeight(Node* pRoot);
 void NLR(Node* pRoot);
@@ -20,5 +28,8 @@ void printLevel(Node* pRoot, int level);
 void LevelOrder(Node* pRoot);
 Node* Search(Node* pRoot, int x);
 int countLeaf(Node* pRoot);
+
+//AVL Tree
+
 
 #endif
