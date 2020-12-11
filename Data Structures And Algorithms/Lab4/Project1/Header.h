@@ -30,6 +30,6 @@ Node* Search(Node* pRoot, int x);
 int countLeaf(Node* pRoot);
 
 //AVL Tree
-
+AVLNode* createNode(int data);
 
 #endif
