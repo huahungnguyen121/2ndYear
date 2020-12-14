@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <climits>
+#include <queue>
 
 using namespace std;
 
@@ -23,7 +24,7 @@ int getHeight(Node* pRoot);
 void NLR(Node* pRoot);
 void LNR(Node* pRoot);
 void LRN(Node* pRoot);
-void printLevel(Node* pRoot, int level);
+//void printLevel(Node* pRoot, int level);
 void LevelOrder(Node* pRoot);
 void findSuccessor(Node*& pRoot, Node*& q);
 void Remove(Node*& pRoot, int x);

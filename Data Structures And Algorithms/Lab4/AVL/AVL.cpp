@@ -134,30 +134,42 @@ void LRN(Node* pRoot)
 	}
 }
 
-void printLevel(Node* pRoot, int level) {
-	if (pRoot && level == 0)
-		cout << pRoot->key << " h = " << pRoot->height << ", ";
-	else if (pRoot && level > 0) {
-		printLevel(pRoot->pLeft, level - 1);
-		printLevel(pRoot->pRight, level - 1);
-	}
-}
+// void printLevel(Node* pRoot, int level) {
+// 	if (pRoot && level == 0)
+// 		cout << pRoot->key << " h = " << pRoot->height << ", ";
+// 	else if (pRoot && level > 0) {
+// 		printLevel(pRoot->pLeft, level - 1);
+// 		printLevel(pRoot->pRight, level - 1);
+// 	}
+// }
 
 void LevelOrder(Node* pRoot)
 {
-	for (size_t i = 0; i < pRoot->height; i++)
-		printLevel(pRoot, i);
+	if (!pRoot)
+        return;
+    queue<Node*> q;
+    q.push(pRoot);
+    
+    while (!q.empty()) {
+        Node* fr = q.front();
+        cout << fr->key << " h = " << fr->height << " ";
+        if (fr->pLeft)
+            q.push(fr->pLeft);
+        if (fr->pRight)
+            q.push(fr->pRight);
+        q.pop();
+    }
 }
 
 void findSuccessor(Node*& pRoot, Node*& q) {
-    Node* p = q;
+    Node* p = pRoot;
     while (pRoot->pLeft) {
         pRoot = pRoot->pLeft;
     }
     q->key = pRoot->key;
     q = pRoot;
     pRoot = pRoot->pRight;
-    while (p->pLeft) {
+    while (p) {
         p->height = getHeight(p);
         p = p->pLeft;
     }
