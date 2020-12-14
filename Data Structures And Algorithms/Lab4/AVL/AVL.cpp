@@ -203,6 +203,8 @@ void Remove(Node*& pRoot, int x) {
                         findSuccessor(pRoot->pRight, q);
                     }
                 }
+                Node* temp = q;
+                q = NULL;
                 delete q;
                 if (pRoot)
 					pRoot->height = getHeight(pRoot);
