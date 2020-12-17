@@ -27,7 +27,7 @@ int main() {
     Insert(p, 600);
 
     Remove(p, 123);
-    //Remove(p, 765);
+    Remove(p, 765);
 
     // Insert(p, 4);
     // Insert(p, 2);

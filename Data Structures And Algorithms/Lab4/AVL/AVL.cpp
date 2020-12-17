@@ -47,7 +47,7 @@ void rotate(Node*& pRoot) {
 		if (hLeft - hRight > 1) {
 			int hLeft1 = (pRoot->pLeft->pLeft) ? pRoot->pLeft->pLeft->height : 0;
 			int hRight1 = (pRoot->pLeft->pRight) ? pRoot->pLeft->pRight->height : 0;
-			if (hLeft1 - hRight1 > 0) {
+			if (hLeft1 - hRight1 >= 0) {
 				rotateRight(pRoot);
 			}
 			else {
@@ -59,7 +59,7 @@ void rotate(Node*& pRoot) {
 		if (hLeft - hRight < -1) {
 			int hLeft1 = (pRoot->pRight->pLeft) ? pRoot->pRight->pLeft->height : 0;
 			int hRight1 = (pRoot->pRight->pRight) ? pRoot->pRight->pRight->height : 0;
-			if (hLeft1 - hRight1 < 0) {
+			if (hLeft1 - hRight1 <= 0) {
 				rotateLeft(pRoot);
 			}
 			else {
@@ -134,15 +134,6 @@ void LRN(Node* pRoot)
 	}
 }
 
-// void printLevel(Node* pRoot, int level) {
-// 	if (pRoot && level == 0)
-// 		cout << pRoot->key << " h = " << pRoot->height << ", ";
-// 	else if (pRoot && level > 0) {
-// 		printLevel(pRoot->pLeft, level - 1);
-// 		printLevel(pRoot->pRight, level - 1);
-// 	}
-// }
-
 void LevelOrder(Node* pRoot)
 {
 	if (!pRoot)
@@ -161,6 +152,13 @@ void LevelOrder(Node* pRoot)
     }
 }
 
+void fixHeight(Node*& pRoot) {
+    while (pRoot) {
+        pRoot->height = getHeight(pRoot);
+        pRoot = pRoot->pLeft;
+    }
+}
+
 void findSuccessor(Node*& pRoot, Node*& q) {
     Node* p = pRoot;
     while (pRoot->pLeft) {
@@ -169,10 +167,7 @@ void findSuccessor(Node*& pRoot, Node*& q) {
     q->key = pRoot->key;
     q = pRoot;
     pRoot = pRoot->pRight;
-    while (p) {
-        p->height = getHeight(p);
-        p = p->pLeft;
-    }
+    pRoot = p;
 }
 
 void Remove(Node*& pRoot, int x) {
@@ -194,20 +189,22 @@ void Remove(Node*& pRoot, int x) {
                 Node* q = pRoot;
                 if (!q->pLeft) {
                     pRoot = q->pRight;
+					delete q;
                 }
                 else {
                     if (!q->pRight) {
                         pRoot = q->pLeft;
+						delete q;
                     }
                     else {
                         findSuccessor(pRoot->pRight, q);
+                        Remove(pRoot->pRight, pRoot->key);
                     }
                 }
-                Node* temp = q;
-                q = NULL;
-                delete q;
-                if (pRoot)
+                if (pRoot) {
 					pRoot->height = getHeight(pRoot);
+                    fixHeight(pRoot->pRight);
+                }
             }
         }
     }
