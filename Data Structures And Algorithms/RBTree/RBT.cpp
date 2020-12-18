@@ -20,6 +20,15 @@ Node* createNode(int key, bool color, Node* nill) {
     return temp;
 }
 
+void rotateLeft(Node*& pRoot, Node*& p)
+{
+    Node* p1 = p->pRight;
+}
+
+void rotateRight(Node*& pRoot, Node*& p)
+{
+}
+
 void Insert(Node*& pRoot, int x, Node* nill) {
     Node* p1 = nill;
     Node* p2 = pRoot;

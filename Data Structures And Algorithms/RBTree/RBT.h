@@ -15,6 +15,8 @@ struct Node {
 
 void release(Node*& pRoot, Node* nill);
 Node* createNode(int key, bool color, Node* nill);
+void rotateLeft(Node*& pRoot, Node*& p);
+void rotateRight(Node*& pRoot, Node*& p);
 void Insert(Node*& pRoot, int x, Node* nill);
 
 #endif
