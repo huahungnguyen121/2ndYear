@@ -142,6 +142,22 @@ int countLess(NODE* pRoot, int x)
     }
     return count;
 }
+
+int countGreater(Node* pRoot, int x) {
+    int count = 0;
+    if(!pRoot)
+        return count;
+    while(pRoot) {
+        if (x >= pRoot->key)
+            pRoot = pRoot->p_right;
+        else {
+            count += 1 + countNode(pRoot->p_right);
+            pRoot = pRoot->p_left;
+        }
+    }
+
+    return count;
+}
 // Vo Dinh Phuc-515
 int max(int a, int b)
 {
