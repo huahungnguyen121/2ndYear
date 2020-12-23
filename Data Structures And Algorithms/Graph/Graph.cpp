@@ -19,6 +19,15 @@ List* createList()
 
 bool addHead(List*& L, string Vertex, int ID)
 {
+	if (L->p_head == NULL && L->p_tail == NULL)
+	{
+		NODE* temp = createNode(Vertex, ID);
+		temp->p_next = L->p_head;
+		L->p_head = temp;
+		L->p_tail = temp;
+		return true;
+	}
+
     NODE* temp = createNode(Vertex, ID);
     temp->p_next = L->p_head;
     L->p_head = temp;
@@ -109,7 +118,8 @@ void DFT(List* graph[], int v, bool visited[]) {
     s.push(v);
     while (!s.empty()) {
         int u = s.top();
-        cout << u << " ";
+		s.pop();
+        cout << u + 1 << " ";
         NODE* p = graph[u]->p_head;
         while (p) {
             if (!visited[p->ID]) {
@@ -119,4 +129,35 @@ void DFT(List* graph[], int v, bool visited[]) {
             p = p->p_next;
         }
     }
+}
+
+void BFT(List* graph[], int n) {
+    bool* visited = new bool[n];
+
+    for (int i = 0; i < n; i++)
+        visited[i] = false;
+
+    queue<int> q;
+
+    for (int i = 0; i < n; i++) {
+        if (!visited[i]) {
+            visited[i] = true;
+            q.push(i);
+			while (!q.empty()) {
+				int u = q.front();
+				q.pop();
+				cout << u + 1 << " ";
+				NODE* p = graph[u]->p_head;
+				while (p) {
+					if (!visited[p->ID]) {
+						visited[p->ID] = true;
+						q.push(p->ID);
+					}
+					p = p->p_next;
+				}
+			}
+        }
+    }
+
+	delete[] visited;
 }

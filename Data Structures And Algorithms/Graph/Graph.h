@@ -29,5 +29,6 @@ void removeTail(List*& L);
 void removeAll(List*& L);
 //graph
 void DFT(List* graph[], int v, bool visited[]);
+void BFT(List* graph[], int n);
 
 #endif

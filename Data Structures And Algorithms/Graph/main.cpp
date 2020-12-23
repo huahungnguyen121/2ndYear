@@ -26,6 +26,16 @@ int main() {
     addTail(l[9], "8", 7);
     addTail(l[9], "9", 8);
 
+	//DFT
+    for (int i = 0; i < n; i++)
+		if (!visited[i])
+			DFT(l, i, visited);
+
+	cout << endl;
+
+	//BFT
+		BFT(l, n);
+
     //free memory
     for (int i = 0; i < n; i++) {
         removeAll(l[i]);
