@@ -2,7 +2,6 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <queue>
 
 using namespace std;
 
@@ -132,18 +131,18 @@ void LRN(Node* pRoot)
 void fixHeight(Node*& pRoot) {
     while (pRoot) {
         pRoot->height = getHeight(pRoot);
-        pRoot = pRoot->pRight;
+        pRoot = pRoot->pLeft;
     }
 }
 
-void findPre(Node*& pRoot, Node*& q) {
+void findSuccessor(Node*& pRoot, Node*& q) {
     Node* p = pRoot;
-    while (pRoot->pRight) {
-        pRoot = pRoot->pRight;
+    while (pRoot->pLeft) {
+        pRoot = pRoot->pLeft;
     }
     q->key = pRoot->key;
     q = pRoot;
-    pRoot = pRoot->pLeft;
+    pRoot = pRoot->pRight;
     pRoot = p;
 }
 
@@ -174,13 +173,13 @@ void Remove(Node*& pRoot, int x) {
                         delete q;
                     }
                     else {
-                        findPre(pRoot->pLeft, q);
-                        Remove(pRoot->pLeft, pRoot->key);
+                        findSuccessor(pRoot->pRight, q);
+                        Remove(pRoot->pRight, pRoot->key);
                     }
                 }
                 if (pRoot) {
                     pRoot->height = getHeight(pRoot);
-                    fixHeight(pRoot->pLeft);
+                    fixHeight(pRoot->pRight);
                 }
             }
         }
@@ -309,35 +308,6 @@ void printNode(Node* pRoot, int num) {
     delete[] temp;
 }
 
-int findMaxNode(Node* pRoot) {
-    int maxNode = -99999;
-    if (!pRoot)
-        return maxNode;
-    queue<Node*> q;
-    q.push(pRoot);
-
-    while (!q.empty()) {
-        Node* fr = q.front();
-        if (fr->pLeft && fr->pRight) {
-            if (fr->pRight->key % fr->pLeft->key == 0 && fr->key > maxNode)
-                maxNode = fr->key;
-        }
-        if (fr->pLeft)
-            q.push(fr->pLeft);
-        if (fr->pRight)
-            q.push(fr->pRight);
-        q.pop();
-    }
-
-    return maxNode;
-}
-
-void findAndRemove(Node*& pRoot) {
-    int x = findMaxNode(pRoot);
-
-    Remove(pRoot, x);
-}
-
 int main() {
     vector<string> a;
     int n = 0;
@@ -355,12 +325,6 @@ int main() {
     cout << endl;
 
     printNode(pRoot, num);
-
-    cout << endl;
-
-    findAndRemove(pRoot);
-
-    LRN(pRoot);
 
     release(pRoot);
 
